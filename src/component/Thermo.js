@@ -2,10 +2,11 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import Thermometer from 'react-thermometer-component';
 import mqtt from 'mqtt/dist/mqtt'
+import { Box } from '@mui/material';
 
 export default function Thermo() {
 
-    const [ temperature, setTemperature ] = useState(50);
+    const [ temperature, setTemperature ] = useState(30);
 
     useEffect(() => {
 
@@ -27,16 +28,19 @@ export default function Thermo() {
     return (
         <div >
             <h1 >Temperature</h1><br/>
-            <Thermometer
-                theme="light"
-                value={temperature}
-                max="100"
-                steps="3"
-                format="°C"
-                size="large"
-                height="300"
-            />
-
+            <Box  display="flex"
+  justifyContent="center"
+  alignItems="center"> 
+                <Thermometer
+                    theme="dark"
+                    value={temperature}
+                    max="45"
+                    steps="3"
+                    form at="°C"
+                    size="large"
+                    height="300"
+                />
+            </Box>
         </div>
       )
 }

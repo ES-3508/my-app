@@ -26,13 +26,13 @@ export default function Model(props) {
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Walls.geometry} material={nodes.Walls.material} >
       <meshStandardMaterial color={'orange'} />
-      </mesh>>
+      </mesh>
       {/* <mesh   geometry={nodes.Light.geometry} >
         <meshStandardMaterial color={color} />
         </mesh> > */}
       <mesh geometry={nodes.Floor.geometry} material={nodes.Floor.material} position={[4.69, 0.06, -4.59]} scale={11.04}>
         <meshStandardMaterial color='brown' />
-      </mesh> />
+      </mesh> 
       <mesh onClick={handleClick}  position={[7.5 ,10,-5]}>
         <sphereGeometry args={[1, 32, 32]}/>
         <meshStandardMaterial  color={color} />

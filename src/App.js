@@ -1,67 +1,47 @@
-// import './App.css';
-import Thermo from './component/Thermo';
-import Bulb from './component/Bulb';
-// import Model from './component/Model';
 
-// function App() {
-//   return (
-//     <div className="App" style={{
-//       display: 'flex',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//       height: '100vh',
-//     }}>
-//       <h1>Room 1</h1><br/>
-//       <Thermo/>
-//       <Bulb/>
-//       <Model/>
-      
-//     </div>
-//   );
-// }
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './component/Card';
+import Dashboard from './pages/Dashboard';
+import Threed from './pages/Threed';
+import Navbar from './component/Navbar';
+import Room from './component/Room';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
-// export default App;
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
-
-
-
-import React, { Suspense, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Center, OrbitControls ,Sky} from '@react-three/drei';
-import Model from './component/Model'; /* highlight-line */
-import { AmbientLight } from 'three';
-// import Thermo from './component/Thermo';
-// import Scene from './component/Scene';
-
-export default function App() {
-   const [button, setButton] = useState(false)
-
-   function set(){
-      setButton(true);
-   }
-
-   return (
-    <div className='container' >
-      {/* <Thermo/> */}
-    <h1 style={{alignItems:Center}}>Smart Home Room 01 Digital Twin with Bulb Action</h1>
-      <Canvas
-         camera={{ position: [2, 0, 12.25], fov: 15 }}
-         style={{
-            backgroundColor: '#111a21',
-            width: '100vw',
-            height: '100vh',
-         }}
-      >
-        <Sky/>
-        <ambientLight />
-        <directionalLight intensity={1} /> 
-         
-           
-         <Suspense fallback={null}>
-            <Model position={[0, 0, 0]} /> /* highlight-line */
-         </Suspense>
-         <OrbitControls />
-      </Canvas>
+const App = () => {
+  return (
+    <Router>
+      <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+    
+      <div>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path='/area/:id'>
+            <Room/>
+          </Route>
+          <Route path="/Live home">
+            <Threed/>
+          </Route>
+        </Switch>
       </div>
-   );
-}
+      </ThemeProvider>
+    </Router>
+  );
+};
+
+export default App;
+

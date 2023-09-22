@@ -1,12 +1,13 @@
 import React from 'react';
 import Bulbs from 'react-bulb';
 
-export default function Bulb() {
+export default function Bulb(props) {
   return (
-    <div> Bulb
+    <div> 
+      <h1>Bulb state</h1>
     <Bulbs
     size={60}
-    color="Black"
+    color={props.color}
   />
   </div>
   )
