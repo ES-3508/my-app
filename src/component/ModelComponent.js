@@ -7,6 +7,7 @@ import React, { useRef ,useState,useEffect} from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import mqtt from 'mqtt/dist/mqtt';
+import Note from './Note';
 export default function Model(props) {
 
 
@@ -27,15 +28,19 @@ export default function Model(props) {
   });
   const [fan,setFan] =useState(false);
   var rotationSpeed
-  const handleClick = (key,value) => {
+  const handleClick = (key, value) => {
+    // Toggle the value of key between "red" and "blue" based on the current value
+    const newValue = value === "red" ? "blue" : "red";
+  
+    // Create the message object to publish
     const message = {
-            // Create the message object to publish
-            key:key,
-            value:value, // Set the desired values
-             // Set the desired values
-          };
-    client.publish(publishTopic, JSON.stringify(message))
+      [key]: newValue, // Set the desired values
+    };
+  
+    // Publish the message
+    client.publish(publishTopic, JSON.stringify(message));
   };
+  
   const fanClick = () => {
     if(fan===false){
       setFan(true)
@@ -61,14 +66,14 @@ export default function Model(props) {
       cylinderRef.current.rotation.y += rotationSpeed * delta;
     }
   });
-  const client = mqtt.connect('ws://172.25.93.28:8083/mqtt')
+  const client = mqtt.connect('ws://192.168.226.1:8083/mqtt')
   useEffect(() => {
 
         
         //const topic1="data/pa08/pa08dash/0808";
         
         client.on('connect', function() {
-        client.subscribe('myTopic');
+        client.subscribe('myTopic2');
         console.log("Client has subscribed")
         });
 
@@ -97,6 +102,15 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/x.glb')
   return (
     <group {...props} dispose={null}>
+      <group>
+        <Note text="Living room" pos={[0, 8, -8.5]}/>
+        <Note text="Bathroom" pos={[-8, 8, -8.5]}/>
+        <Note text="Kitchen" pos={[9, 8, -8.5]}/>
+        <Note text="Bed room" pos={[-8, 8, -1.5]}/>
+        <Note text="Garage" pos={[-8, 8, 5]}/>
+        <Note text="Garden" pos={[0, 8, 5]}/>
+        
+      </group>
       <group scale={[12.184, 12.184, 9.722]}>
         <mesh geometry={nodes.Plane.geometry} material={nodes.Plane.material} />
         <mesh geometry={nodes.Plane_1.geometry} material={nodes.Plane_1.material} />

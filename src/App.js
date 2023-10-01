@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './component/Card';
 import Dashboard from './pages/Dashboard';
 import Threed from './pages/Threed';
+import Ground from './pages/Ground';
+import First from './pages/First';
 import Navbar from './component/Navbar';
 import Room from './component/Room';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -33,8 +35,14 @@ const App = () => {
           <Route path='/area/:id'>
             <Room/>
           </Route>
-          <Route path="/Live home">
+          <Route path="/Panormic view">
             <Threed/>
+          </Route>
+          <Route path="/Ground floor">
+            <Ground/>
+          </Route>
+          <Route path="/First floor">
+            <First/>
           </Route>
         </Switch>
       </div>

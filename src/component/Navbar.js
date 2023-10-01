@@ -40,7 +40,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ChaletIcon from '@mui/icons-material/Chalet';
 
-const pages = ['Dashboard', 'Live home'];
+const pages = ['Dashboard', 'Panormic view','Ground floor','First floor'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
