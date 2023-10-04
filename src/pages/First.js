@@ -64,7 +64,8 @@ const [spotlightPositionZ, setSpotlightPositionZ] = useState(0);
             <Suspense fallback={null}>
               <FirstFloor/>
             </Suspense>
-            <OrbitControls/>
+            <OrbitControls minDistance={120} // Set your desired minimum zoom level here
+      maxDistance={250} />
          </Canvas> 
 
     </div>

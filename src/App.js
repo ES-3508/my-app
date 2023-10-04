@@ -10,6 +10,8 @@ import Navbar from './component/Navbar';
 import Room from './component/Room';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import Info from './pages/Info';
+import Lin from './component/Lin';
 
 const darkTheme = createTheme({
   palette: {
@@ -43,6 +45,12 @@ const App = () => {
           </Route>
           <Route path="/First floor">
             <First/>
+          </Route>
+          <Route path="/info">
+            <Info/>
+          </Route>
+          <Route path="/live home">
+            <Lin/>
           </Route>
         </Switch>
       </div>

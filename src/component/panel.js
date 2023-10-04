@@ -12,7 +12,7 @@ const images = [
   },
   {
     url: '/home.png',
-    title: 'Live Home',
+    title: 'Live home',
     width: '50%',
   },
 ];

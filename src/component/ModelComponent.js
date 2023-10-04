@@ -15,14 +15,14 @@ export default function Model(props) {
 
   const [color, setColor] = useState('red');
   const [lightColors, setLightColors] = useState({
-    Light_bedroom: 'blue',
-    Light_garden: 'blue',
-    Light_garage: 'blue',
-    Light1_kitchen: 'blue',
-    Light2_kitchen:'blue',
-    Light_livingroom:'blue',
-    Light2_livingroom:'blue',
-    Light_bathroom:'blue'
+    Light_bedroom: 'yellow',
+    Light_garden: 'yellow',
+    Light_garage: 'yellow',
+    Light1_kitchen: 'yellow',
+    Light2_kitchen:'yellow',
+    Light_livingroom:'yellow',
+    Light2_livingroom:'yellow',
+    Light_bathroom:'yellow'
     
     // Add more lights and their default colors here
   });
@@ -66,14 +66,14 @@ export default function Model(props) {
       cylinderRef.current.rotation.y += rotationSpeed * delta;
     }
   });
-  const client = mqtt.connect('ws://192.168.226.1:8083/mqtt')
+  const client = mqtt.connect('ws://192.168.219.1:8083/mqtt')
   useEffect(() => {
 
         
         //const topic1="data/pa08/pa08dash/0808";
         
         client.on('connect', function() {
-        client.subscribe('myTopic2');
+        client.subscribe('myTopic');
         console.log("Client has subscribed")
         });
 
@@ -102,7 +102,7 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/x.glb')
   return (
     <group {...props} dispose={null}>
-      <group>
+      {/* <group>
         <Note text="Living room" pos={[0, 8, -8.5]}/>
         <Note text="Bathroom" pos={[-8, 8, -8.5]}/>
         <Note text="Kitchen" pos={[9, 8, -8.5]}/>
@@ -110,7 +110,7 @@ export default function Model(props) {
         <Note text="Garage" pos={[-8, 8, 5]}/>
         <Note text="Garden" pos={[0, 8, 5]}/>
         
-      </group>
+      </group> */}
       <group scale={[12.184, 12.184, 9.722]}>
         <mesh geometry={nodes.Plane.geometry} material={nodes.Plane.material} />
         <mesh geometry={nodes.Plane_1.geometry} material={nodes.Plane_1.material} />
@@ -156,7 +156,7 @@ export default function Model(props) {
       <mesh onClick={() => handleClick('Light1_kitchen',lightColors['Light1_kitchen'])} geometry={nodes.Light1_kitchen.geometry} material={nodes.Light1_kitchen.material} position={[8.754, 6.208, 2.574]} scale={0.408} >
         <meshStandardMaterial color={lightColors['Light1_kitchen']} />
       </mesh> 
-      <mesh geometry={nodes.Fan_livingroom_.geometry}   material={nodes.Fan_livingroom_.material} ref={cylinderRef} position={[0, 5.246, -4.586]} scale={[0.523, 0.187, 0.523]} >
+      <mesh onClick={() => fanClick()} geometry={nodes.Fan_livingroom_.geometry}   material={nodes.Fan_livingroom_.material} ref={cylinderRef} position={[0, 5.246, -4.586]} scale={[0.523, 0.187, 0.523]} >
         <meshStandardMaterial color='white' />
       </mesh> 
       <mesh onClick={() => handleClick('Light2_livingroom',lightColors['Light2_livingroom'])} geometry={nodes.Light2_livingroom.geometry} material={nodes.Light2_livingroom.material} position={[-0.308, 6.208, -1.16]} scale={0.408} >

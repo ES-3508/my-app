@@ -83,25 +83,6 @@ import Lights from '../component/Lights';
 export default function Threed() {
   const [cameraPosition, setCameraPosition] = useState([2, 0, 12.25]);
 
-  // Function to move the camera left
-  const moveLeft = () => {
-    setCameraPosition((prevPosition) => [prevPosition[0] - 100, prevPosition[1], prevPosition[2]]);
-  };
-
-  // Function to move the camera right
-  const moveRight = () => {
-    setCameraPosition((prevPosition) => [prevPosition[0] + 100, prevPosition[1], prevPosition[2]]);
-  };
-
-  // Function to move the camera up
-  const moveUp = () => {
-    setCameraPosition((prevPosition) => [prevPosition[0], prevPosition[1] + 100, prevPosition[2]]);
-  };
-
-  // Function to move the camera down
-  const moveDown = () => {
-    setCameraPosition((prevPosition) => [prevPosition[0], prevPosition[1] - 100, prevPosition[2]]);
-  };
 
   return (
     <div>
@@ -111,13 +92,7 @@ export default function Threed() {
         </Typography>
       </Box>
 
-      {/* Button group for camera movement */}
-      <ButtonGroup variant="contained" color="primary" aria-label="camera movement">
-        <Button onClick={moveLeft}>Left</Button>
-        <Button onClick={moveRight}>Right</Button>
-        <Button onClick={moveUp}>Up</Button>
-        <Button onClick={moveDown}>Down</Button>
-      </ButtonGroup>
+      
 
       <Canvas
         camera={{ position: cameraPosition, fov: 15 }}
