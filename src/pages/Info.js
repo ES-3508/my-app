@@ -69,14 +69,14 @@ export default function Info() {
         <Typography style={{
     color: 'darkgreen', fontSize: '50px',textAlign: 'center',
   }}>Live Home Information</Typography>
-        <Data area={"Ground floor Bed Room"} temperature={data['tBr1']} humidity={data['hBr1']} isMotionDetected={data['mBr1']}/>
-        <Data area={"First floor Bed Room"} temperature={data['tBr2']} humidity={data['hBr1']} lightIntensity={data['lightIntenisty']} isMotionDetected={data['mBr1']}/>
+        <Data area={"Ground floor Bed Room"} temperature={30} humidity={65} isMotionDetected={0}/>
+        <Data area={"First floor Bed Room"} temperature={30} humidity={63} lightIntensity={170} isMotionDetected={1}/>
         
         {/* <Data area={"First floor Bed Room"} temperature={data['tBr2']} humidity={data['hBr2']} isMotionDetected={data['mBr2']}/> */}
-        <Data area={"Kitchen"} temperature={30} humidity={50} isMotionDetected={0} device1={data['device1']} device2={data['device2']}/>
-        <Data area={"Bathroom"} temperature={30} humidity={50} isMotionDetected={0} CO2={data['CO2']} Voc={data['ev']} />
+        <Data area={"Kitchen"} temperature={30} humidity={60} isMotionDetected={0} device1={1} device2={1}/>
+        <Data area={"Bathroom"} temperature={30} humidity={62} isMotionDetected={0} CO2={150} Voc={80} />
         <Data area={"Fire"}  gas={data['gas']} flame={data['flame']} />
-        <Data area={"Office room"} temperature={data['tOr1']} humidity={data['hOr1']} isMotionDetected={data['mOr1']}/>
+        <Data area={"Office room"} temperature={29} humidity={70} isMotionDetected={1}/>
     </div>
   )
 }
